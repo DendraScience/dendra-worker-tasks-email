@@ -1,6 +1,6 @@
 # Dendra Worker Email Tasks
 
-Dendra Worker tasks for importing email messages.
+Dendra Worker tasks for importing email data.
 
 ## Instructions
 
