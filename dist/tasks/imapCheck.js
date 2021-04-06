@@ -15,12 +15,11 @@ module.exports = {
   assign(m, res, {
     logger
   }) {
-    const {
-      imapClient
-    } = m.private; // HACK: Prevent errors from old clients
+    m.private.imapClient.removeAllListeners(); // HACK: Handle errors from old clients
 
-    if (imapClient.socket && imapClient.streamer) imapClient.socket.unpipe(imapClient.streamer);
-    imapClient.removeAllListeners();
+    m.private.imapClient.once('error', err => {
+      logger.error('IMAP (old) client error', err);
+    });
     delete m.private.imapClient;
     delete m.private.imapMailbox;
     logger.error('IMAP client reset');
