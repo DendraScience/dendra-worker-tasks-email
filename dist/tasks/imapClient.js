@@ -9,7 +9,7 @@ const {
 
 module.exports = {
   guard(m) {
-    return !m.imapClientError && !m.private.imapClient && !m.imapClientConnected;
+    return !m.imapClientError && !m.imapClientReady && !m.private.imapClient && !m.imapClientConnected;
   },
 
   async execute(m, {

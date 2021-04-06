@@ -9,8 +9,6 @@ module.exports = {
 
   guard(m) {
     return (
-      !m.fetchAndPublishError &&
-      !m.fetchAndPublishReady &&
       m.private.stan &&
       m.stanConnected &&
       m.private.imapClient &&

@@ -5,7 +5,7 @@
  */
 module.exports = {
   guard(m) {
-    return !m.imapMailboxError && !m.private.imapMailbox && m.private.imapClient && m.imapClientConnected;
+    return !m.imapMailboxError && !m.imapMailboxReady && !m.private.imapMailbox && m.private.imapClient && m.imapClientConnected;
   },
 
   execute(m, {
