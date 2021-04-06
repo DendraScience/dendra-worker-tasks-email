@@ -36,9 +36,9 @@ module.exports = {
         // Don't rethrow
       }
       try {
-        await m.private.imapClient.logout()
+        await m.private.imapClient.close()
       } catch (err) {
-        logger.error('IMAP client logout error', err)
+        logger.error('IMAP client close error', err)
         throw err
       }
     }

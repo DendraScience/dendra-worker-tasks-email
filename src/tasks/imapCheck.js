@@ -17,7 +17,13 @@ module.exports = {
   },
 
   assign(m, res, { logger }) {
-    m.private.imapClient.removeAllListeners()
+    const { imapClient } = m.private
+
+    // HACK: Prevent errors from old clients
+    if (imapClient.socket && imapClient.streamer)
+      imapClient.socket.unpipe(imapClient.streamer)
+
+    imapClient.removeAllListeners()
 
     delete m.private.imapClient
     delete m.private.imapMailbox
